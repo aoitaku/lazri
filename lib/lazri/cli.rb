@@ -3,8 +3,11 @@ require_relative 'parser'
 require_relative 'transform'
 
 module Lazri
+
   class CLI < Thor
-    desc "json INPUT", "convert into json"
+
+    desc "json INPUT",
+      "convert into json"
     def json(input)
       src = File.read(input, encoding: "utf-8")
       output = File.dirname(input) + ?/ + File.basename(input, '.lazr') + '.json'
@@ -13,7 +16,8 @@ module Lazri
       'done.'
     end
 
-    desc "text INPUT [transform TRANSFORM=azr]", "convert into text with specified format(default: Aozora)"
+    desc "text INPUT [transform TRANSFORM=azr]",
+      "convert into text with specified format(default: Aozora)"
     method_option %w{ transform -t } => "azr"
     def azr(input)
       src = File.read(input, encoding: "utf-8")
@@ -27,10 +31,12 @@ module Lazri
       end
     end
 
-    desc "html INPUT", "convert into html"
+    desc "html INPUT",
+      "convert into html"
     def html(input)
       src = File.read(input, encoding: "utf-8")
       Lazri.to_html(src)
     end
+
   end
 end
