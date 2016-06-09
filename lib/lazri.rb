@@ -1,2 +1,2 @@
 require "lazri/version"
-require "lazri/client"
+require "lazri/cli"

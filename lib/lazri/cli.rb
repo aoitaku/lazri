@@ -7,7 +7,10 @@ module Lazri
     desc "json INPUT", "convert into json"
     def json(input)
       src = File.read(input, encoding: "utf-8")
-      Lazri.to_json(src)
+      output = File.dirname(input) + ?/ + File.basename(input, '.lazr') + '.json'
+      return 'failed: output file already exists.' if File.exist?(output)
+      File.write(output, Lazri.to_json(src))
+      'done.'
     end
 
     desc "text INPUT [transform TRANSFORM=azr]", "convert into text with specified format(default: Aozora)"
