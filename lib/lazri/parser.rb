@@ -65,6 +65,10 @@ module Lazri
       any
     end
 
+    rule(:header_containable_text) do |variable|
+      header_containable_char.repeat(1)
+    end
+
     rule(:header_containable) do
       inline_element |
       header_containable_text.as(:text)
