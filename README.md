@@ -1,5 +1,7 @@
 # Lazri
 
+Lazri is an acronym for "Lazri Aozora bunko inspired documentation format". This format can convert into HTML, json, Aozora bunko format text, Narou, Kakuyomu, and also other formats are planned. Of course, implementaion is here!
+
 ## Installation
 
 Add this line to your application's Gemfile:
