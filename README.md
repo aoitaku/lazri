@@ -1,6 +1,6 @@
 # Lazri
 
-Lazri is an acronym for "Lazri Aozora bunko inspired documentation format". This format can convert into HTML, json, Aozora bunko format text, Narou, Kakuyomu, and also other formats are planned. Of course, implementaion is here!
+Lazri is an acronym for "**L**azri **A**o**z**o**r**a bunko **i**nspired documentation format". This format can convert into HTML, json, Aozora bunko format text, Narou, Kakuyomu, and also other formats are planned. Of course, implementaion is here!
 
 ## Installation
 
