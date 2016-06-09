@@ -1,6 +1,4 @@
 require 'thor'
-require_relative 'parser'
-require_relative 'transform'
 
 module Lazri
 

@@ -1,2 +1,3 @@
 require "lazri/version"
-require "lazri/cli"
+require "lazri/parser"
+require "lazri/transform"

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'lazri'
+require 'lazri/cli'
+
+Lazri::CLI.start
