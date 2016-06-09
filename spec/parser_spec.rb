@@ -112,8 +112,76 @@ describe Lazri, 'parser' do
 
   describe 'in document context' do
 
+    it 'parses paragraphs separated by blank line as several clauses' do
+      result = @lazri.parse <<-EOF.each_line.map{|str| str.gsub(/^ +/, '')}.join
+        文章
 
-    it 'parses sentenses as each section, clause and paragraph separately' do
+        文章文章文章
+        文章
+
+        文章文章文章
+        文章
+
+        文章文章文章
+      EOF
+      expect(result).to match [
+        { section: [
+          { clause: [{ paragraph: [{ text: '文章' }] }] },
+          { clause: [
+            { paragraph: [{ text: '文章文章文章' }] },
+            { paragraph: [{ text: '文章' }] }
+          ]},
+          { clause: [
+            { paragraph: [{ text: '文章文章文章' }] },
+            { paragraph: [{ text: '文章' }] }
+          ]},
+          { clause: [{ paragraph: [{ text: '文章文章文章' }] }] }
+        ]}
+      ]
+    end
+
+    it 'parses paragraphs separated by several blank lines as several sections' do
+      result = @lazri.parse <<-EOF.each_line.map{|str| str.gsub(/^ +/, '')}.join
+        文章
+        文章文章文章
+        文章
+
+
+        文章文章文章
+        文章
+        文章文章文章
+
+
+        文章
+        文章文章文章
+        文章
+      EOF
+      expect(result).to match [
+        { section: [
+          { clause: [
+            { paragraph: [{ text: '文章' }] },
+            { paragraph: [{ text: '文章文章文章' }] },
+            { paragraph: [{ text: '文章' }] }
+          ]}
+        ]},
+        { section: [
+          { clause: [
+            { paragraph: [{ text: '文章文章文章' }] },
+            { paragraph: [{ text: '文章' }] },
+            { paragraph: [{ text: '文章文章文章' }] }
+          ]}
+        ]},
+        { section: [
+          { clause: [
+            { paragraph: [{ text: '文章' }] },
+            { paragraph: [{ text: '文章文章文章' }] },
+            { paragraph: [{ text: '文章' }] }
+          ]}
+        ]}
+      ]
+    end
+
+    it 'parses document as each section, clause and paragraph separately' do
       result = @lazri.parse <<-EOF.each_line.map{|str| str.gsub(/^ +/, '')}.join
         ====== 大見出し ======
 
