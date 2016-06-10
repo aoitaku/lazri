@@ -31,3 +31,11 @@ gem 'lazri'
     $ lazri j example.lazr
 
 `.lazr` ファイルが `.json` ファイルに変換されます。
+
+## 語源
+
+Lazri の名前は lapis lazuli に含まれる青金石（lazurite）と、ラズ人の言語であるラズ語（lazuri nena）に由来します。
+
+Lazri の仕様は青空文庫のアノテーションを参考に「そこそこヒューマンライタブル、まずまずマシンパーサブル™」な構造化テキストフォーマットを目指して作られました。青空にちなんだ名前として azur を含み、かつ言語に関係する名前であることから、lazuri が採用されました。
+
+lazuri というコーカサス地方に一般的な名称と衝突するのを回避するため、また、"**L**azri **A**o**z**o**r**a bunko **i**nspired structured text format" という [バクロニム](https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%AF%E3%83%AD%E3%83%8B%E3%83%A0) を構成することができるように、途中の u を脱落させています。
