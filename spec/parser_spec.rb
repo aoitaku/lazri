@@ -109,6 +109,19 @@ describe Lazri, 'parser' do
       expect(result).to match ruler: '***'
     end
 
+    it 'parses "- TEXT" as bulleted list' do
+      result = block_element_context.parse_with_debug('- TEXT')
+      expect(result).to match bulleted: [
+        { text: 'TEXT'}
+      ]
+    end
+
+    it 'parses "1) TEXT" as numbered list' do
+      result = block_element_context.parse_with_debug('1) TEXT')
+      expect(result).to match numbered: [
+        { text: 'TEXT'}
+      ]
+    end
   end
 
   describe 'in document context' do
