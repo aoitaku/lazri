@@ -1,6 +1,6 @@
 # Lazri
 
-Lazri is an acronym for "**L**azri **A**o**z**o**r**a bunko **i**nspired documentation format". This format can be converted into HTML, json, Aozora bunko format text, Narou, Kakuyomu, and also other formats are planned. Of course, implementaion is here!
+Lazri is an abbreviation for "**L**azri **A**o**z**o**r**a bunko **i**nspired structured text format". This format can be converted into HTML, json, Aozora bunko format text, Narou, Kakuyomu, and also other formats are planned. Of course, implementaion is here!
 
 ## Installation
 
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-Install `specific_install` gem (see `https://github.com/rdp/specific_install`)
+Install `specific_install` gem (see [https://github.com/rdp/specific_install](https://github.com/rdp/specific_install))
 
 And then execute:
 
