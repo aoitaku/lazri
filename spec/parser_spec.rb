@@ -115,7 +115,8 @@ describe Lazri, 'parser' do
         { item: { text: 'TEXT'} }
       ]
     end
-        it 'parses nested bulleted list as expected' do
+
+    it 'parses nested bulleted list as expected' do
       result = block_element_context.parse_with_debug("- TEXT\n  - TEXT")
       expect(result).to match bulleted_list: [
         { item: {
@@ -132,8 +133,23 @@ describe Lazri, 'parser' do
 
     it 'parses "1) TEXT" as numbered list' do
       result = block_element_context.parse_with_debug('1) TEXT')
-      expect(result).to match numbered: [
-        { text: 'TEXT'}
+      expect(result).to match numbered_list: [
+        { item: { text: 'TEXT'} }
+      ]
+    end
+
+    it 'parses nested numbered list as expected' do
+      result = block_element_context.parse_with_debug("1) TEXT\n  a) TEXT")
+      expect(result).to match numbered_list: [
+        { item: {
+            text: 'TEXT',
+            children: {
+              numbered_list: [
+                { item: { text: 'TEXT' } }
+              ]
+            }
+          }
+        }
       ]
     end
   end

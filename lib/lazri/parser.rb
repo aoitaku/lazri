@@ -145,10 +145,16 @@ module Lazri
       line_ending
     end
 
+    rule(:numbering_marker) do
+      match['\d'].repeat(1)  |
+      match['a-z'].repeat(1) |
+      match['A-Z'].repeat(1)
+    end
+
     def numbered_item(depth)
       lf.absent? >>
       indent(depth) >>
-      match['\d'].repeat(1) >>
+      numbering_marker >>
       str(?)) >>
       sp >>
       text.as(:text) >>
@@ -164,9 +170,9 @@ module Lazri
 
     def numbered_list(lv)
       (
-        numbered_item(lv).as(:item) >>
+        numbered_item(lv) >>
         dynamic {|*| list(lv+1) }.as(:children).maybe
-      ).repeat(1)
+      ).as(:item).repeat(1)
     end
 
     def list(lv)
