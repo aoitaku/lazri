@@ -109,10 +109,24 @@ describe Lazri, 'parser' do
       expect(result).to match ruler: '***'
     end
 
-    it 'parses "- TEXT" as bulleted list' do
+    it 'parses "- TEXT" as list' do
       result = block_element_context.parse_with_debug('- TEXT')
-      expect(result).to match bulleted: [
-        { text: 'TEXT'}
+      expect(result).to match bulleted_list: [
+        { item: { text: 'TEXT'} }
+      ]
+    end
+        it 'parses nested bulleted list as expected' do
+      result = block_element_context.parse_with_debug("- TEXT\n  - TEXT")
+      expect(result).to match bulleted_list: [
+        { item: {
+            text: 'TEXT',
+            children: {
+              bulleted_list: [
+                { item: { text: 'TEXT' } }
+              ]
+            }
+          }
+        }
       ]
     end
 

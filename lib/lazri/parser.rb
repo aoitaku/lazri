@@ -132,9 +132,52 @@ module Lazri
       subheading
     end
 
+    def indent(depth)
+      str(?\s * depth * 2)
+    end
+
+    def bulleted_item(depth)
+      lf.absent? >>
+      indent(depth) >>
+      str(?-) >>
+      sp >>
+      text.as(:text) >>
+      line_ending
+    end
+
+    def numbered_item(depth)
+      lf.absent? >>
+      indent(depth) >>
+      match['\d'].repeat(1) >>
+      str(?)) >>
+      sp >>
+      text.as(:text) >>
+      line_ending
+    end
+
+    def bulleted_list(lv)
+      (
+        bulleted_item(lv) >>
+        dynamic {|*| list(lv+1) }.as(:children).maybe
+      ).as(:item).repeat(1)
+    end
+
+    def numbered_list(lv)
+      (
+        numbered_item(lv).as(:item) >>
+        dynamic {|*| list(lv+1) }.as(:children).maybe
+      ).repeat(1)
+    end
+
+    def list(lv)
+      bulleted_list(lv).as(:bulleted_list) |
+      numbered_list(lv).as(:numbered_list)
+    end
+
     rule(:block_element) do
-      ruler |
-      header
+      ruler  |
+      header |
+      list(0)
     end
 
     rule(:paragraph) do
