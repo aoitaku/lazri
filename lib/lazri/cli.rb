@@ -1,4 +1,5 @@
 require 'thor'
+require "lazri/transform"
 
 module Lazri
 
