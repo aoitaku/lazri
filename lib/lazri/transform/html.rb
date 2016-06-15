@@ -22,7 +22,7 @@ module Lazri
         Oga::XML::Element.new(option)
       end
 
-      def nodeset(nodes)
+      def nodeset(*nodes)
         Oga::XML::NodeSet.new(nodes)
       end
 
@@ -38,8 +38,21 @@ module Lazri
         html.text(text.to_s)
       end
 
+      rule(bouten: simple(:text)) do
+        html.element(name: 'b', children: html.nodeset(html.text(text.to_s)), attributes: [html.attribute(name: 'class', value: 'bouten')])
+      end
+
+      rule(rubi: { rubi_base: simple(:rubi_base), rubi_text: simple(:rubi_text) }) do
+        html.element(name: 'ruby', children: html.nodeset(
+          html.element(name: 'rb', children: html.nodeset(html.text(rubi_base.to_s))),
+          html.element(name: 'rp', children: html.nodeset(html.text('（'))),
+          html.element(name: 'rt', children: html.nodeset(html.text(rubi_text.to_s))),
+          html.element(name: 'rp', children: html.nodeset(html.text('）')))
+        ))
+      end
+
       rule(sequence(:nodes)) do
-        html.nodeset(nodes)
+        html.nodeset(*nodes)
       end
 
       rule(paragraph: simple(:nodeset)) do

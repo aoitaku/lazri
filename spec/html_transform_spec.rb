@@ -25,12 +25,12 @@ describe Lazri, 'HTML transform' do
 
       文章
 
-      文章文章文章
+      文章``文章``文章
 
       ***
 
       文章文章
-      文章文章文章
+      文章^文章(ぶんしょう)文章
 
       == 小見出し ==
 
@@ -46,9 +46,9 @@ describe Lazri, 'HTML transform' do
       <h2>中見出し</h2>
       <section><div><p>文章文章</p></div></section>
       <h3>小見出し</h3>
-      <section><div><p>文章</p></div><div><p>文章文章文章</p></div></section>
+      <section><div><p>文章</p></div><div><p>文章<b\ class="bouten">文章</b>文章</p></div></section>
       <hr\ title="***">
-      <section><div><p>文章文章</p><p>文章文章文章</p></div></section>
+      <section><div><p>文章文章</p><p>文章<ruby><rb>文章</rb><rp>（</rp><rt>ぶんしょう</rt><rp>）</rp></ruby>文章</p></div></section>
       <h3>小見出し</h3>
       <section><div><p>文章文章</p></div></section>
     ].join).to_xml
