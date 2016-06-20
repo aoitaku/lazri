@@ -41,19 +41,18 @@ module Lazri
       rule(heading: simple(:nodeset)) do
         ?\n +
         "　　　　" + nodeset +
-        ?\n + ?\n
+        ?\n + ?\n + ?\n
       end
 
       rule(subheading: simple(:nodeset)) do
         "　　" + nodeset +
-        ?\n
+        ?\n + ?\n
 
       end
 
       rule(ruler: simple(:text)) do
-        ?\n +
-        "　　＊＊＊" + nodeset +
-        ?\n + ?\n
+        "　　＊＊＊" +
+        ?\n + ?\n + ?\n
       end
 
     end

@@ -38,9 +38,52 @@ describe Lazri, 'kakuyomu transform' do
     EOF
   end
 
+  let(:expected) do
+    undented <<-EOF
+
+
+      　　　　　　大見出し
+
+
+      文章
+      文章文章
+
+
+      文章文章
+
+
+
+      　　　　中見出し
+
+
+      文章文章
+
+
+      　　小見出し
+
+      文章
+
+      文章《《文章》》文章
+
+
+      　　＊＊＊
+
+
+      文章文章
+      文章｜文章《ぶんしょう》文章
+
+
+      　　小見出し
+
+      文章文章
+
+
+    EOF
+  end
+
   it "converts document into kakuyomu formatted text" do
-    result = Lazri.to_text(document)
-    puts result
+    result = Lazri.to_text(document, format: :kakuyomu)
+    expect(result).to eq expected
   end
 
 end
