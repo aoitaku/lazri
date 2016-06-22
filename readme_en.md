@@ -1,5 +1,7 @@
 # Lazri
 
+English | [日本語](//github.com/aoitaku/lazri/blob/master/readme.md)
+
 Lazri is a bacronym for "**L**azri **A**o**z**o**r**a bunko **i**nspired structured text format". This format can be converted into HTML, json, Aozora bunko format text, Narou, Kakuyomu, and also other formats are planned. Of course, implementaion is here!
 
 ## Installation

@@ -1,5 +1,7 @@
 # Lazri
 
+[English](//github.com/aoitaku/lazri/blob/master/readme_en.md) | 日本語
+
 Lazri は "**L**azri **A**o**z**o**r**a bunko **i**nspired structured text format" の略称です。HTML、json、青空文庫形式、なろう形式、カクヨム形式のテキストに変換可能で、他にも様々なフォーマットへの変換が可能になることを予定しています。もちろん、実装はここにあります！（こめかみを指差す）
 
 ## インストール
